@@ -6,6 +6,8 @@ Projeto da disciplina SCC0240 - Bases de Dados - Grupo 08
 
 Este projeto visa demonstrar a criação e manipulação de um banco de dados, incluindo a definição de tabelas, inserção de dados, aplicação de restrições, criação de índices e execução de consultas complexas.
 
+[Link Vídeo](https://youtu.be/DLqLwDfJ2VU})
+
 ---
 
 ## ⚙️ Configuração e Execução
