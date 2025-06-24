@@ -1,4 +1,4 @@
---manter todos alunos que tiveram reprovações e quantas vezes eles reprovaram cada disciplina
+-- Manter todos alunos que tiveram reprovações e quantas vezes eles reprovaram cada disciplina
 CREATE VIEW reprovacoes AS
 SELECT A.nome, A.sobrenome, A.telefone, D.codigo_disc, COUNT(*) AS Vezes_cursada
 	FROM Aluno As A
@@ -8,7 +8,7 @@ SELECT A.nome, A.sobrenome, A.telefone, D.codigo_disc, COUNT(*) AS Vezes_cursada
 	GROUP BY (A.nome, A.sobrenome, A.telefone, D.codigo_disc)
 	HAVING COUNT(*) > 1;
 
---manter todos alunos que foram aprovados e em cada matéria que eles foram aprovados 
+-- Manter todos alunos que foram aprovados e em cada matéria que eles foram aprovados 
 CREATE VIEW aprovados AS
 SELECT M.nome_aluno, D.codigo_disc, AVG(N.nota) AS media
 	FROM Matriculas AS M
@@ -19,7 +19,7 @@ SELECT M.nome_aluno, D.codigo_disc, AVG(N.nota) AS media
 	GROUP BY M.nome_aluno, D.codigo_disc
 	HAVING AVG(N.nota) >= 5;
 
---manter todas materias que estão com turmas inativas, ou seja que não tiveram matriculados no ultimo periodo
+-- Manter todas materias que estão com turmas inativas, ou seja que não tiveram matriculados no ultimo periodo
 CREATE VIEW Turmas_inativas AS
 SELECT D.codigo_disc
 	FROM Disciplina AS D 
