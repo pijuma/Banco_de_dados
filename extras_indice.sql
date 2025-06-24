@@ -72,7 +72,7 @@ $$;
 /*
 2o script
 */
-
+-- 2º script corrigido: gera 150.000 matrículas de forma eficiente, evitando colisões de PK/UNIQUE
 WITH
   cnt_al AS (
     SELECT COUNT(*) AS cnt_al
@@ -126,21 +126,17 @@ SELECT
   a.sobrenome,
   a.telefone,
   t.id_turma,
-  (floor(random() * 28) + 1)::int,                                                  
-  (floor(random() * 12) + 1)::int,                                                  
-  (floor(random() * 26) + 2000)::int,                                                
-  (array['Ativa','Inativa','Pendente','Cancelada'])[(floor(random() * 4) + 1)::int],
-  CASE WHEN random() < 0.5 THEN NULL ELSE (floor(random() * 28) + 1)::int END,       
-  CASE WHEN random() < 0.5 THEN NULL ELSE (floor(random() * 12) + 1)::int END,        
-  CASE WHEN random() < 0.5 THEN NULL ELSE (floor(random() * 26) + 2000)::int END,      
-  (floor(random() * 1000))::int                                                      
+  (floor(random() * 28) + 1)::int,                                                  -- dia 1–28
+  (floor(random() * 12) + 1)::int,                                                  -- mês 1–12
+  (floor(random() * 26) + 2000)::int,                                                -- ano 2000–2025
+  (array['Ativa','Inativa','Pendente','Cancelada'])[(floor(random() * 4) + 1)::int],-- status
+  CASE WHEN random() < 0.5 THEN NULL ELSE (floor(random() * 28) + 1)::int END,        -- dia mudança
+  CASE WHEN random() < 0.5 THEN NULL ELSE (floor(random() * 12) + 1)::int END,        -- mês mudança
+  CASE WHEN random() < 0.5 THEN NULL ELSE (floor(random() * 26) + 2000)::int END,      -- ano mudança
+  (floor(random() * 1000))::int                                                      -- taxa 0–999
 FROM combos c
 JOIN alunos a ON a.rn = c.idx_aluno
 JOIN turmas t ON t.rn = c.idx_turma
 ON CONFLICT (nome_aluno, sobrenome_aluno, telefone_aluno, id_turma) DO NOTHING;
 
-  (FLOOR(RANDOM() * 1000))::int AS taxa
-FROM combos c
-JOIN alunos a ON a.rn = c.idx_aluno
-JOIN turmas t ON t.rn = c.idx_turma;
 
