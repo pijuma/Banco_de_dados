@@ -12,3 +12,4 @@ O arquivo "extra_indice.sql" é usado apenas para popular exaustivamente as tabe
 - Matheus Paiva Angarola - **12560982** ([Github](https://github.com/MatheusPaivaa))
 - Felipe de Castro Azambuja -**14675437** ([Github](https://github.com/DeguShi))
 - Pietra Gullo Salgado Chaves - **14603822** ([Github](https://github.com/pijuma))
+- João Pedro Viguini T. T. Correa - **14675503** ([Github](https://github.com/jpviguini))
